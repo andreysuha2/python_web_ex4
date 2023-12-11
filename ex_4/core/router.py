@@ -30,7 +30,6 @@ class HTTPRouter():
 
     def use_route(self, method: HTTPMethods, path: str, request_handler: BaseHTTPRequestHandler):
         handler = self.__routes.get((method, path), None)
-        print(method, path, handler, self.__routes)
         if handler is None:
             raise RouterNotFoundException
         else:
@@ -40,7 +39,7 @@ class HTTPRouter():
         if (method, path) in self.__routes:
             raise RouteAlreadyRegistred
         self.__routes[(method, path)] = handler
-
+        
     def get(self, path: str, handler: Callable):
         self.route(HTTPMethods.GET, path, handler)
 
