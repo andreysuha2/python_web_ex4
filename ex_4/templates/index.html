@@ -1,11 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Python server</title>
-</head>
-<body>
-    
-</body>
-</html>
+{% extends "layouts/base.html" %}
+{% block head %}
+    {{ super() }}
+{% endblock %}
+{% block title %}Home page{% endblock %}
+{% block content %}
+  <p>Main page</p>
+{% endblock %}

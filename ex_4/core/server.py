@@ -1,14 +1,15 @@
-from collections.abc import Callable
-from socketserver import BaseRequestHandler, BaseServer
-from typing import Any
+from socketserver import BaseServer
 from ex_4.core.router import HTTPRouter, HTTPMethods, RouterNotFoundException
 from http.server import BaseHTTPRequestHandler, HTTPServer
-import os
+from jinja2 import Environment, FileSystemLoader
 import urllib.parse
+import os
 
 class HTTPRequestHandler(BaseHTTPRequestHandler):
     def __init__(self, request, client_address, server: BaseServer, router: HTTPRouter) -> None:
         self.router = router
+        template_path = os.path.join(os.path.dirname(__file__), '../templates')
+        self.env = Environment(loader=FileSystemLoader("ex_4/templates"))
         super().__init__(request, client_address, server)
 
     def _handle_request(self, method = HTTPMethods):
@@ -30,12 +31,13 @@ class HTTPRequestHandler(BaseHTTPRequestHandler):
     def do_DELETE(self):
         self._handle_request(HTTPMethods.DELETE)
 
-    def send_html_file(self, filename, status=200):
+    def send_html_file(self, filename, status=200, *args, **kwargs):
         self.send_response(status)
         self.send_header('Content-type', 'text/html')
         self.end_headers()
-        with open(f"ex_4/templates/{filename}", 'rb') as fd:
-            self.wfile.write(fd.read())
+        template = self.env.get_template(filename)
+        content = template.render(*args, **kwargs)
+        self.wfile.write(content.encode("utf-8"))
     
 class HTTPSuperServer(HTTPServer):
     def __init__(self, server_address, RequestHandlerClass, router: HTTPRouter, bind_and_activate: bool = True) -> None:
