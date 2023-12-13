@@ -15,13 +15,6 @@ class RouteAlreadyRegistred(Exception):
     pass
 
 class HTTPRouter():
-    __router = None
-
-    def __new__(cls):
-        if cls.__router is None:
-            cls.__router = super().__new__(HTTPRouter)
-        return cls.__router
-
     def __init__(self):
         self.__routes = {}
 
@@ -51,5 +44,3 @@ class HTTPRouter():
 
     def delete(self, path: str, handler: Callable):
         self.route(HTTPMethods.DELETE, path, handler)
-
-router = HTTPRouter()

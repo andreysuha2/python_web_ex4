@@ -1,11 +1,20 @@
-from ex_4.core.server import server
-from ex_4.core.router import router
+from dotenv import load_dotenv
+from ex_4.core.server import HTTPSuperServer, HTTPRequestHandler
+from ex_4.core.router import HTTPRouter
 from routes import use_routes
+import os
+
+load_dotenv()
+
+HOST = os.getenv("HOST")
+PORT = os.getenv("PORT")
 
 if __name__ == "__main__":
-    try:
+    router = HTTPRouter()
+    server = HTTPSuperServer((HOST, int(PORT)), HTTPRequestHandler, router)
+    try: 
         use_routes(router)
-        print('Server started')
+        print(f'Server started: {HOST}:{PORT}')
         server.serve_forever()
     except KeyboardInterrupt:
         print('Server stoped')
