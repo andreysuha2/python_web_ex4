@@ -5,6 +5,9 @@ description = ""
 authors = ["Your Name <you@example.com>"]
 readme = "README.md"
 
+[tool.poetry.scripts]
+start-server = "ex_4.main:main"
+
 [tool.poetry.dependencies]
 python = "^3.11"
 python-dotenv = "^1.0.0"
