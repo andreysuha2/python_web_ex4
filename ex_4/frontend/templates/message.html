@@ -4,7 +4,25 @@
 {% endblock %}
 {% block title %}Message page{% endblock %}
 {% block content %}
-  <div class="app-container page-home">
-    
-  </div>
+    <div class="app-container page-message">
+        <form class="app-form" action="/message" method="post">
+            <div class="app-form--inner app-form--inner__message">
+                <div class="app-form--row">
+                    <div class="app-form--cell">
+                        <input class="app-form--input" name="name" placeholder="Name" type="text">
+                    </div>
+                </div>
+                <div class="app-form--row">
+                    <div class="app-form--cell">
+                        <textarea class="app-form--textarea" name="text" placeholder="text" cols="30" rows="10"></textarea>
+                    </div>
+                </div>
+                <div class="app-form--row">
+                    <div class="app-form--cell">
+                        <button class="app-from--submit" type="submit">Submit</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
 {% endblock %}
