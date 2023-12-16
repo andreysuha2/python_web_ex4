@@ -13,11 +13,8 @@ class MainController:
         
     def message_handler(self, request: HTTPRequestHandler):
         data = request.rfile.read(int(request.headers['Content-Length']))
-        print(data)
         data_parse = urllib.parse.unquote_plus(data.decode())
-        print(data_parse)
         data_dict = {key: value for key, value in [el.split('=') for el in data_parse.split('&')]}
-        print(data_dict)
         self.send_message(data_dict)
         request.send_response(302)
         request.send_header('Location', '/')

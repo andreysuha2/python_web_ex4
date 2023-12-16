@@ -21,8 +21,9 @@ class Storage():
 
     def write_to_file(self, data):
         stored_data = self.read_data()
-        print(stored_data)
-        stored_data[datetime.now()] = data
-        print(stored_data, json.dumps(stored_data))
+        print("storage data:", stored_data)
+        stored_data[str(datetime.now())] = data
+        json_data = json.dumps(stored_data)
+        print(stored_data, json_data)
         with open(self.storage_path, 'w') as file:
             file.write(json.dumps(stored_data))          

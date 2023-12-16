@@ -2,7 +2,7 @@ from dotenv import load_dotenv
 from ex_4.core.server import HTTPSuperServer, HTTPRequestHandler
 from ex_4.core.router import HTTPRouter
 from ex_4.core.soketServer import SocketServer
-from .routes import use_routes
+from ex_4.routes import use_routes
 import concurrent.futures
 import os
 

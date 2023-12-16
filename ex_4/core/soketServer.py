@@ -15,8 +15,8 @@ class SocketServer():
                 data, address = self.sock.recvfrom(1024)
                 print("Recive data:", data)
                 print("from:", address)
-                self.sock.sendto(data, address)
                 self.storage.write_to_file(json.loads(data))
+                self.sock.sendto(data, address)
         except KeyboardInterrupt:
             self.sock.close() 
                 
