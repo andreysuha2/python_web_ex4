@@ -1,0 +1,24 @@
+.app-menu {
+    margin-left: 20px;
+
+    &--list {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+    }
+
+    &--item {
+        &:not(:first-child) {
+            margin-left: 10px;
+        }
+    }
+
+    &--link {
+        color: $textColor;
+        text-decoration: underline;
+        font: {
+            size: 18px;
+            weight: bold;
+        }
+    }
+}

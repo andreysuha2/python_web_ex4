@@ -1,0 +1,32 @@
+.app-form {
+    &--row {
+        display: flex;
+        justify-content: space-between;
+
+        &:not(:last-child) {
+            margin-bottom: 10px;
+        }
+    }
+
+    &--cell {
+        width: 100%;
+    }
+
+    &--input, &--textarea {
+        width: 100%;
+        border-radius: 8px;
+        border: 1px solid $borderColor;
+        padding: 10px 20px;
+    }
+
+    &--submit {
+        padding: 10px 30px;
+        text-transform: uppercase;
+        border-radius: 10px;
+        cursor: pointer;
+        font: {
+            size: 20px;
+            weight: bold;
+        }
+    }
+}

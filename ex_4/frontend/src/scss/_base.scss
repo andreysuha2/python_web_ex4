@@ -1,0 +1,73 @@
+//  Базовые стили
+
+html {
+    box-sizing: border-box;
+    height: 100%;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: inherit;
+}
+
+body {
+    background-color: $bodyBg;
+    color: $textColor;
+    font-family: $fontFamily;
+    font-weight: $fontWeight;
+    font-size: $fontSize;
+    line-height: $lineHeight;
+    height: 100%;
+}
+
+a {
+    color: $linkColor;
+    text-decoration: none;
+
+    &:hover,
+    &:active {
+        color: $linkColorHover;
+    }
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    vertical-align: middle;
+}
+
+
+
+.app {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    &--content {
+        flex: 1 0 auto;
+    }
+
+    &--main {
+        padding-top: 20px;
+    }
+}
+
+.app-section {
+    position: relative;
+}
+
+.app-container {
+    max-width: $containerWidth;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: $containerPadding;
+    padding-right: $containerPadding;
+}
+
+.app-icon {
+    display: inline-block;
+}
