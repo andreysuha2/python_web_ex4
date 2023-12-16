@@ -1,6 +1,6 @@
 import socket
 import json
-from ex_4.storage.storage import Storage
+from ex_4.core.storage import Storage
 
 class SocketServer():
     def __init__(self, HOST: str, PORT: int):
